@@ -15,10 +15,20 @@ Necesita la API levantada (`infra`) y las credenciales del admin (`ADMIN_USERNAM
 
 | Tarea | Estado |
 |---|---|
-| T-21 (≥ 40 libros, 10 socios, 15 préstamos, 3 vencidos) | ⏳ **Pendiente**: no se inició por tiempo. Se priorizó el núcleo de la API (T-01, T-02, T-17) con evidencia, como indica `tasks.md` |
+| T-21 (≥ 40 libros, 10 socios, 15 préstamos, 3 vencidos) | ✅ parcial: `src/seed.mjs` siembra por la API los bibliotecarios de demostración y verifica las cinco categorías; es idempotente. ⏳ Libros, socios y préstamos quedan pendientes porque la API aún no los expone |
 
 ## Convenciones
 
 - Código, rutas, ramas y mensajes de commit/PR: **inglés** (Conventional Commits).
 - Documentación y mensajes al usuario: **español** (constitución, artículo XI).
 - Flujo de ramas: `feature/*` → `develop` → `main`, siempre mediante Pull Request.
+
+## Cómo se ejecuta
+
+Requiere Node 18 o superior (sin dependencias) y la API levantada desde `infra`:
+
+```bash
+API_URL=http://localhost:8000/api/v1 ADMIN_USERNAME=admin ADMIN_PASSWORD=<clave> node src/seed.mjs
+```
+
+Variables opcionales: `LIBRARIANS` (cantidad, por defecto 3) y `DEMO_PASSWORD`.
